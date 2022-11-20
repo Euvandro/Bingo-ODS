@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            text-align: center;
+            font-family: 'Bebas Neue', cursive;
+        }
+
+
+
+        table {
+            margin: auto;
+        }
+
+        th {
+            height: 175px;
+            width: 175px;
+            border: solid black 2px;
+        }
+
+        .content {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+
+        header {
+            height: 200px;
+        }
+
+        .logos {
+            justify-content: space-between;
+            align-items: baseline;
+            display: flex;
+            margin-bottom: 30px;
+        }
+
+        th img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+
+        }
+
+        #logo_rex {
+            width: 150px;
+        }
+
+        #logo_ufsc {
+            width: 50px;
+        }
+
+        #logo_mcti {
+            width: 300px;
+        }
+        h1{
+            font-size: 80px;
+        }
+        h2{
+            font-size: 50px;
+        }
+       
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <header>
+        <!-- <div class="logos">
+                <img id="logo_rex" src="img/logo_variacao_cor-removebg-preview.png" alt="">
+                <img id="logo_ufsc" src="img/ufsc.png" alt="">
+                <img id="logo_mcti" src="img/MCTI_horizontal_Positivo.png" alt="">
+            
+        </div> -->
+        <div>
+            <h1>Bingo</h1>
+            <h2>Objetivos de Desenvolvimento Sustentável</h2>
+        </div>
+
+    </header>
+
+
+    <div class="content">
+
+        <table cellspacing="0">
+
+            <tr id="linha1">
+                <th class="ods" style="border-top: 0; border-left: 0;"></th>
+                <th class="ods" style="border-top: 0;"></th>
+                <th class="ods" style="border-top: 0; border-right: 0;"></th>
+            </tr>
+
+            <tr id="linha2">
+                <th class="ods" style="border-left: 0;"></th>
+                <th> <img src="ODS/0.png"></th>
+                <th class="ods" style="border-right: 0;"></th>
+            </tr>
+
+            <tr id="linha3">
+                <th class="ods" style="border-bottom: 0; border-left: 0;"></th>
+                <th class="ods" style="border-bottom: 0;"></th>
+                <th class="ods" style="border-bottom: 0; border-right: 0;"></th>
+            </tr>
+
+        </table>
+
+
+
+
+        <div class="row" style="margin-top: 50px">
+            <div class="col-4">
+                <img id="logo_rex" src="img/logo_variacao_cor-removebg-preview.png" alt="">
+            </div>
+            <div class="col-4">
+                <img id="logo_ufsc" src="img/ufsc.png" alt="">
+            </div>
+            <div class="col-4">
+                <img id="logo_mcti" src="img/MCTI_horizontal_Positivo.png" alt="">
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <script>
+
+        let imgs = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", "11.png", "12.png", "13.png", "14.png", "15.png", "16.png", "17.png"]
+
+        let ths = document.getElementsByClassName('ods');
+        console.log(ths);
+
+        for (let i = 0; i < ths.length; i++) {
+            let img = document.createElement('img');
+            let novaODS = imgs.splice(Math.floor(Math.random() * imgs.length), 1);
+            console.log(novaODS)
+            img.src = "ODS/" + novaODS;
+            ths[i].appendChild(img);
+            console.log(imgs);
+
+        }
+
+    </script>
+
+</body>
+
+</html>
