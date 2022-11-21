@@ -43,9 +43,10 @@
         }
 
         .content {
-            position: absolute;
+            /* position: absolute;
             width: 100%;
-            bottom: 0;
+            bottom: 0; */
+            margin-top: 75px;
         }
 
         header {
@@ -87,8 +88,43 @@
             font-size: 50px;
         }
 
+        .cartela {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .botoes {
+            width: 80%;
+            margin: auto;
+            margin-top: 20PX;
+            padding: 25px;
+            font-size: 25px;
+            border: solid 1px black;
+        }
+        .botoes p{
+            color: red;
+        }
+        .btn{
+            font-size: 40px;
+        }
+
         @page {
             size: A5;
+        }
+
+        @media print {
+
+            .botoes,
+            hr {
+                visibility: hidden;
+                display: none;
+            }
+
+            .cartela {
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+
         }
     </style>
 
@@ -98,80 +134,126 @@
 
 <body>
 
-    <header>
-        <!-- <div class="logos">
-                <img id="logo_rex" src="img/logo_variacao_cor-removebg-preview.png" alt="">
-                <img id="logo_ufsc" src="img/ufsc.png" alt="">
-                <img id="logo_mcti" src="img/MCTI_horizontal_Positivo.png" alt="">
-            
-        </div> -->
-        <div>
-            <h1>Bingo</h1>
-            <h2>Objetivos de Desenvolvimento Sustentável</h2>
+    <div class="botoes">
+        <button class="btn btn-primary" onclick="novaCartela();">Adicionar Cartela</button>
+        <div style="display: flex;justify-content: center; margin-top: 10px;">
+            <h3 id="contador" style="margin-right: 5px;">1</h3>
+            <h3>Cartela(s)</h3>
         </div>
-
-    </header>
-
-
-    <div class="content">
-
-        <table cellspacing="0">
-
-            <tr id="linha1">
-                <th class="ods" style="border-top: 0; border-left: 0;"></th>
-                <th class="ods" style="border-top: 0;"></th>
-                <th class="ods" style="border-top: 0; border-right: 0;"></th>
-            </tr>
-
-            <tr id="linha2">
-                <th class="ods" style="border-left: 0;"></th>
-                <th> <img src="ODS/0.png"></th>
-                <th class="ods" style="border-right: 0;"></th>
-            </tr>
-
-            <tr id="linha3">
-                <th class="ods" style="border-bottom: 0; border-left: 0;"></th>
-                <th class="ods" style="border-bottom: 0;"></th>
-                <th class="ods" style="border-bottom: 0; border-right: 0;"></th>
-            </tr>
-
-        </table>
+        <p>Ctrl+P > Salvar como PDF > Definir tamanho A5 caso não seja automatico > Margens: Padrão > Salvar</p>
+    </div>
+    <div id="geral-cartelas">
 
 
 
+        <div class="cartela">
+            <header>
+                <div>
+                    <h1>Bingo</h1>
+                    <h2>Objetivos de Desenvolvimento Sustentável</h2>
+                </div>
 
-        <div class="row" style="margin-top: 50px">
-            <div class="col-4">
-                <img id="logo_rex" src="img/logo_variacao_cor-removebg-preview.png" alt="">
-            </div>
-            <div class="col-4">
-                <img id="logo_ufsc" src="img/ufsc.png" alt="">
-            </div>
-            <div class="col-4">
-                <img id="logo_mcti" src="img/MCTI_horizontal_Positivo.png" alt="">
+            </header>
+
+
+            <div class="content">
+
+                <table cellspacing="0">
+
+                    <tr id="linha1">
+                        <th class="ods" style="border-top: 0; border-left: 0;"></th>
+                        <th class="ods" style="border-top: 0;"></th>
+                        <th class="ods" style="border-top: 0; border-right: 0;"></th>
+                    </tr>
+
+                    <tr id="linha2">
+                        <th class="ods" style="border-left: 0;"></th>
+                        <th> <img src="ODS/0.png"></th>
+                        <th class="ods" style="border-right: 0;"></th>
+                    </tr>
+
+                    <tr id="linha3">
+                        <th class="ods" style="border-bottom: 0; border-left: 0;"></th>
+                        <th class="ods" style="border-bottom: 0;"></th>
+                        <th class="ods" style="border-bottom: 0; border-right: 0;"></th>
+                    </tr>
+
+                </table>
+
+
+
+
+                <div class="row" style="margin-top: 50px">
+                    <div class="col-4">
+                        <img id="logo_rex" src="img/logo_variacao_cor-removebg-preview.png" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img id="logo_ufsc" src="img/ufsc.png" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img id="logo_mcti" src="img/MCTI_horizontal_Positivo.png" alt="">
+                    </div>
+                </div>
+
+
+                <hr>
+
             </div>
         </div>
-
-
-
 
     </div>
 
+
     <script>
 
-        let imgs = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", "11.png", "12.png", "13.png", "14.png", "15.png", "16.png", "17.png"]
+        GerarDadosTabela();
 
-        let ths = document.getElementsByClassName('ods');
-        console.log(ths);
+        function novaCartela() {
 
-        for (let i = 0; i < ths.length; i++) {
-            let img = document.createElement('img');
-            let novaODS = imgs.splice(Math.floor(Math.random() * imgs.length), 1);
-            console.log(novaODS)
-            img.src = "ODS/" + novaODS;
-            ths[i].appendChild(img);
-            console.log(imgs);
+            adicionarContador();
 
+
+            let PrimeiraTab = document.getElementsByClassName('cartela')[0];
+            let bod = document.getElementById('geral-cartelas');
+
+
+            let nova = PrimeiraTab.cloneNode(true);
+            console.log(bod);
+            console.log(PrimeiraTab);
+            nova.querySelectorAll('.imgODS').forEach(e => e.remove());
+            GerarDadosTabela(nova);
+            bod.appendChild(nova);
+
+        }
+
+        function GerarDadosTabela(nodo) {
+
+            let imgs = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", "11.png", "12.png", "13.png", "14.png", "15.png", "16.png", "17.png"]
+            let ths;
+            if (nodo) {
+                ths = nodo.getElementsByClassName('ods');
+            } else {
+                ths = document.getElementsByClassName('ods');
+            }
+            console.log(ths);
+
+            for (let i = 0; i < ths.length; i++) {
+                let img = document.createElement('img');
+                let novaODS = imgs.splice(Math.floor(Math.random() * imgs.length), 1);
+                console.log(novaODS)
+                img.className = "imgODS";
+                img.src = "ODS/" + novaODS;
+                ths[i].appendChild(img);
+                console.log(imgs);
+
+            }
+        }
+
+        function adicionarContador(){
+            let count = document.getElementById("contador");
+            let num = count.innerHTML;
+
+            count.innerHTML = Number(num)+1;
         }
 
     </script>
